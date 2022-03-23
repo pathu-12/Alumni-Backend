@@ -133,6 +133,10 @@ class CreateEvent(View):
         }
         event = Event.objects.create(**event_data)
         event.save()
+        event_info = {
+            "event": event
+        }
+        return JsonResponse(event_info, status=200)
     
 
 """HIRING VIEWS"""
