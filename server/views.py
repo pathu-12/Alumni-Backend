@@ -1,4 +1,4 @@
-from email.mime import image
+from email import message
 from pydoc import describe
 from django.views import View
 from django.core.files.storage import FileSystemStorage
@@ -133,10 +133,7 @@ class CreateEvent(View):
         }
         event = Event.objects.create(**event_data)
         event.save()
-        event_info = {
-            "event": event
-        }
-        return JsonResponse(event_info, status=200)
+        return JsonResponse(message={"Event is submitted"}, status=200)
     
 
 """HIRING VIEWS"""
